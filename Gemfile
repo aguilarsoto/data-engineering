@@ -30,7 +30,9 @@ gem 'jquery-rails'
 # To use debugger
 # gem 'ruby-debug19', :require => 'ruby-debug'
 
-group :test do
+group :test, :development do
   # Pretty printed test output
+  gem 'shoulda-matchers'
+  gem 'shoulda'
   gem 'turn', '0.8.2', :require => false
 end
