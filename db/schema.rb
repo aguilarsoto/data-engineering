@@ -11,7 +11,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20120114171411) do
+ActiveRecord::Schema.define(:version => 20120114214918) do
 
   create_table "items", :force => true do |t|
     t.string   "description"
@@ -39,13 +39,15 @@ ActiveRecord::Schema.define(:version => 20120114171411) do
     t.integer  "item_id"
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.integer  "quantity",     :default => 0
+    t.integer  "upload_id"
   end
 
   create_table "uploads", :force => true do |t|
-    t.string   "checksum"
+    t.string   "document_fingerprint"
     t.string   "error"
-    t.decimal  "total",                 :precision => 16, :scale => 2
-    t.decimal  "partial",               :precision => 16, :scale => 2
+    t.decimal  "total"
+    t.decimal  "partial"
     t.string   "document_file_name"
     t.string   "document_content_type"
     t.integer  "document_file_size"

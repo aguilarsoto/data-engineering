@@ -35,5 +35,7 @@ group :test, :development do
   # Pretty printed test output
   gem 'shoulda-matchers'
   gem 'shoulda'
+  gem 'factory_girl_rails'
+ 
   gem 'turn', '0.8.2', :require => false
 end
