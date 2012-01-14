@@ -4,6 +4,7 @@ class Item < ActiveRecord::Base
   has_many :purchasers, :through => :purchases
 
   validates_presence_of :description, :price
+  validates_numericality_of :price
 
 end
 
