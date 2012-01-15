@@ -1,6 +1,10 @@
 require 'test_helper'
 
 class UploadsControllerTest < ActionController::TestCase
+  def setup
+    @user = User.create! :email => 'mario@bros.com', :password => 'lovepeach', :password_confirmation => 'lovepeach'
+    sign_in @user
+  end
 
   test "routes" do
     assert_routing '/uploads', :controller => 'uploads', :action => 'index'
@@ -43,6 +47,7 @@ class UploadsControllerTest < ActionController::TestCase
   end
 
   test 'index will display error when one file has errors' do
+    Upload.destroy_all
     Factory(:upload, :error => 'blah', :partial => 3.0)
     Factory(:upload, :partial => 2.0)
     get :index
@@ -52,6 +57,7 @@ class UploadsControllerTest < ActionController::TestCase
   end
 
   test 'index will display error when one file hasnt beeing parsed yet' do
+    Upload.destroy_all
     Factory(:upload, :partial => nil)
     Factory(:upload, :partial => 2.0)
     get :index

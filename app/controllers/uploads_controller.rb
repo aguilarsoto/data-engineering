@@ -1,5 +1,7 @@
 class UploadsController < ApplicationController
   respond_to :html
+  before_filter :authenticate_user!
+
 
   def index
     @uploads = Upload.all

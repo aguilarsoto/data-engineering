@@ -11,6 +11,7 @@ gem 'delayed_paperclip'
 gem 'delayed_job'
 gem 'delayed_job_active_record'
 gem 'aws-s3'
+gem 'devise'
 
 # Gems used only for assets and not required
 # in production environments by default.
