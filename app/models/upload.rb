@@ -2,7 +2,8 @@ class Upload < ActiveRecord::Base
   has_many :purchases
 
   validates_attachment_presence :document
-  validates_attachment_content_type :document, :content_type => ["text/plain", "text/csv", "text/tsv"]
+
+  scope :valid, where("error is null AND partial is not null")
 
   has_attached_file :document, :styles => {:original => {}},
     :processors => [:living_social_upload],

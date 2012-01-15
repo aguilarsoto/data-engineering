@@ -35,21 +35,29 @@ class UploadsControllerTest < ActionController::TestCase
 
   test 'index will display all the uploads' do
     Upload.destroy_all
-    uploads = [Factory(:upload), Factory(:upload)]
+    uploads = [Factory(:upload, :partial => 2.0), Factory(:upload, :partial => 3.0)]
     get :index
     assert_equal uploads,assigns(:uploads) 
+    assert_match /Current Total: 5.0/, @response.body
+    assert_match /Current Total of Valid Updates: 5.0/, @response.body
   end
 
   test 'index will display error when one file has errors' do
-    Factory(:upload, :error => 'blah')
+    Factory(:upload, :error => 'blah', :partial => 3.0)
+    Factory(:upload, :partial => 2.0)
     get :index
     assert_match 'See Errors', @response.body
+    assert_match /Current Total: 5.0/, @response.body
+    assert_match /Current Total of Valid Updates: 2.0/, @response.body
   end
 
   test 'index will display error when one file hasnt beeing parsed yet' do
     Factory(:upload, :partial => nil)
+    Factory(:upload, :partial => 2.0)
     get :index
     assert_match 'Not parsed Yet', @response.body
+    assert_match /Current Total: 2.0/, @response.body
+    assert_match /Current Total of Valid Updates: 2.0/, @response.body
   end
 
   test 'create will re render new with errors if unable to create upload' do

@@ -6,6 +6,12 @@ class UploadTest < ActiveSupport::TestCase
   should have_many(:purchases)
 
 
-  should validate_attachment_content_type(:document).allowing('text/plain', 'text/csv', 'text/tsv')
+  test 'valid scope only returns valid uploads' do
+    Upload.destroy_all
+    valid = [Factory(:upload), Factory(:upload)]
+    error = Factory(:upload, :error => 'this is an error')
+    not_processed = Factory(:upload, :partial => nil)
+    assert_equal valid, Upload.valid
+  end
 
 end
