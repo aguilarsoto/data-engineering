@@ -1,0 +1,31 @@
+<h1>Uploads</h1>
+<%= link_to 'New Upload', new_upload_path %>
+
+<table>
+  <tr>
+    <th>Id</th>
+    <th>File Name</th>
+    <th>uploaded At</th>
+    <th>Partial</th>
+    <th>Valid</th>
+  </tr>
+<% @uploads.each do |upload| %>
+  <tr>
+    <td><%= upload.id %></td>
+    <td><%= upload.document_file_name %></td>
+    <td><%= upload.document_updated_at %></td>
+    <td><%= upload.partial %></td>
+    <%- state = upload.partial ? nil : 'Not parsed Yet'  %>
+    <%- state ||= upload.error ? 'See Errors' : 'Valid' -%>
+    <td><%= link_to state, upload %></td>
+  </tr>
+<%- end -%>
+</table>
+
+<p>
+  Current Total: <%= @partial %>
+</p>
+<p>
+  Current Total of Valid Updates: <%= @total %>
+</p>
+

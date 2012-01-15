@@ -1,0 +1,27 @@
+<h1>Upload <%= @upload.id%></h1>
+<p> File Name: <%= @upload.document_file_name  %></p>
+<p> Uploaded at: <%= @upload.document_updated_at %></p>
+<p> Download File: <%= link_to :click_here,  @upload.document.url %></p>
+<%- if @upload.partial -%>
+  <%- if @upload.error  -%>
+  <p>
+    Seems to be a problem with your uploaded file <br/>
+    <%= @upload.error %>
+  </p>
+  <%- end -%>
+  <p>
+    This Upload's total is: <%= @upload.partial %>
+  </p>
+<%- else -%>
+  <p> File hasnt being process yet, comeback later for your results</p> 
+<%- end -%>
+
+<p>
+  Current Total: <%= @partial %>
+</p>
+<p>
+  Current Total of Valid Updates: <%= @total %>
+</p>
+
+<%= link_to 'Back', uploads_path %>
+
