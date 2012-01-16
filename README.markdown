@@ -1,3 +1,54 @@
+# how to Setup and run the application
+## Setup
+### Have you tried our heroku setup?
+Hi tester. how nice of you to drop by, lets start by saying that I saved you some time and set up the current app on heroku so you don't have to. yeah!!! less work if you want to try our setup on heroku please use this link [http://gentle-frost-3132.herokuapp.com/] and keep reading on the running the app section.
+
+
+### Seems like you want to setup your own instance.
+Well lets keep talking then. the first thing you need to do is clone the repo so open a terminal on your computer and clone the repo (more configuration may be needed if you dont have github and git setup)
+
+
+ - git clone git@github.com:aguilarsoto/data-engineering.git
+
+
+Now that you have the repo in your local machine, now you need to 'bundle exec' this will load all the gems on your local repo.
+
+
+- bundle exec
+
+
+Now lets setup the db, this repo has PostgreSQL gem installed so I Highly recommend you to use this database but don't feel that this is impose so feel free to setup your desired database if you wish to do so please review the section 3.3 of the tutorial [http://guides.rubyonrails.org/getting_started.html], since this is a very unique file for your specific setup, I'm not providing a definition for it.
+
+
+Ok we have the db now lets run our migrations this will generate all the association needed to use the site.
+
+- rake db:migrate
+
+Now you can start the server and access it. to start the server you need to
+
+- rails s
+
+Fire your favorite web browser and access the site "localhost:3000", after this you can follow the Running the App instructions but also remember to start your worker so we can process the jobs queued
+
+- rake jobs:work
+
+##Running the App
+###SignUp
+
+When accessing the server you are going to be prompted with a sign in page since its your first time using the site click on the 'sign up' link and create a new account to create a new account you are going to need your email, password and in case you want to do openid signins your open id url as your identity url.
+
+###Testing OpenID
+
+After creating your account you are going to be already signed in the site so to test the openID signin click on the signout button and enter your openID information on the identity url section of sign in
+
+###Upload a file and get results
+to upload a file go to uploads/new and upload the file you want. this file is going to get queued and processed later on the worker threads, you are going to get prompted with a message telling you if your upload has being processed or not. when processed you are going to get 3 results current file total, current total, and current total of all valid uploads.
+
+the difference in between this three is.
+- current file's total is the total revenue of this file
+- current total is the total of all the uploads on history even the ones that reported errors
+- current total of all valid uploads is the sum of all valid uploads that end their process with no errors.
+
 # Challenge for Software Engineer - Big Data 
 To better assess a candidates development skills, we would like to provide the following challenge.  You have as much time as you'd like (though we ask that you not spend more than a few hours) and may use any programming language or framework you'd like.  
 
