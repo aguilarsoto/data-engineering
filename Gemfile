@@ -14,6 +14,7 @@ gem 'aws-s3'
 gem 'devise'
 gem 'devise_openid_authenticatable'
 
+gem 'heroku'
 # Gems used only for assets and not required
 # in production environments by default.
 group :assets do
