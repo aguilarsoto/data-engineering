@@ -6,3 +6,5 @@ DataEngineering::Application.config.session_store :cookie_store, key: '_data-eng
 # which shouldn't be used to store highly confidential information
 # (create the session table with "rails generate session_migration")
 # DataEngineering::Application.config.session_store :active_record_store
+
+Rails.application.config.middleware.insert_before(Warden::Manager, Rack::OpenID)

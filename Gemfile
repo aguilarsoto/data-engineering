@@ -12,6 +12,7 @@ gem 'delayed_job'
 gem 'delayed_job_active_record'
 gem 'aws-s3'
 gem 'devise'
+gem 'devise_openid_authenticatable'
 
 # Gems used only for assets and not required
 # in production environments by default.
