@@ -45,9 +45,11 @@ After creating your account you are going to be already signed in the site so to
 to upload a file go to uploads/new and upload the file you want. this file is going to get queued and processed later on the worker threads, you are going to get prompted with a message telling you if your upload has being processed or not. when processed you are going to get 3 results current file total, current total, and current total of all valid uploads.
 
 the difference in between this three is.
-1. current file's total is the total revenue of this file
-1. current total is the total of all the uploads on history even the ones that reported errors
-1. current total of all valid uploads is the sum of all valid uploads that end their process with no errors.
+- current file's total is the total revenue of this file
+ 
+- current total is the total of all the uploads on history even the ones that reported errors
+
+- current total of all valid uploads is the sum of all valid uploads that end their process with no errors.
 
 # Challenge for Software Engineer - Big Data 
 To better assess a candidates development skills, we would like to provide the following challenge.  You have as much time as you'd like (though we ask that you not spend more than a few hours) and may use any programming language or framework you'd like.  
